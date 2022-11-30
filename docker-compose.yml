@@ -21,7 +21,7 @@ services:
     expose:
     - "8281"
     ports:
-    - 8271:8281
+    - 8281:8281
     environment:
       - JAVA_OPTS=
             -DEUREKA_SERVER=http://eureka-server:8761/eureka -DHOST_NAME=mongo
@@ -35,7 +35,7 @@ services:
     expose:
     - "8181"
     ports:
-    - 8171:8181
+    - 8181:8181
     environment:
       - JAVA_OPTS=
             -DEUREKA_SERVER=http://eureka-server:8761/eureka -DHOST_NAME=mongo
@@ -49,7 +49,7 @@ services:
     expose:
     - "8580"
     ports:
-    - 8371:8580
+    - 8580:8580
     environment:
       - JAVA_OPTS=
             -DEUREKA_SERVER=http://eureka-server:8761/eureka

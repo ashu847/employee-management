@@ -43,7 +43,7 @@ pipeline{
 			}
 		stage("docke-tag-eureka"){
             steps{
-				bat "docker tag eureak-server:1.0 ashu847/eureak-server:1.0"
+				bat "docker tag eureka-server:1.0 ashu847/eureka-server:1.0"
             }
 			}
 		stage("docke-tag-employee"){
