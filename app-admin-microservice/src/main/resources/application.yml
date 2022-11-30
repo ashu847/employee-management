@@ -1,0 +1,19 @@
+server:
+ port: 8281
+
+spring:
+ application:
+    name: app-admin-microservice
+ data:
+    mongodb:
+      host: ${HOST_NAME:localhost}
+      port: 27017
+      database: employee
+ 
+
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone:  ${EUREKA_SERVER:http://localhost:8761/eureka/}
+debug: true 
