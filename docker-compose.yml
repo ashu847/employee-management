@@ -1,7 +1,7 @@
 version: '3'
 services:
   eureka-server:
-    image: eureak-server:1.0
+    image: ashu1847/eureka-server:1.0
     container_name: eureka-server
     expose:
     - "8761"
@@ -17,7 +17,7 @@ services:
     - 27017:27017
 
   app-admin-microservice:
-    image: app-admin-microservice:1.0
+    image: ashu847/app-admin-microservice:1.0
     expose:
     - "8281"
     ports:
@@ -31,7 +31,7 @@ services:
         - mongo
         
   app-employee-microservice:
-    image: app-employee-microservice:1.0
+    image: ashu847/app-employee-microservice:1.0
     expose:
     - "8181"
     ports:
@@ -45,7 +45,7 @@ services:
         - mongo
         
   app-management-service:
-    image: app-management-service:1.0
+    image: ashu847/app-management-service:1.0
     expose:
     - "8580"
     ports:
@@ -56,4 +56,11 @@ services:
       
     links: 
         - eureka-server
+        
+  employee-management-react:
+    image: ashu847/employee-management-react:1.0
+    expose:
+    - "3000"
+    ports:
+    - "3000:3000"
         
