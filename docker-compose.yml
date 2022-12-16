@@ -12,7 +12,7 @@ services:
     image: mongo:latest
     container_name: mongo
     expose:
-    - "27018"
+    - "27017"
     ports: 
     - 27017:27017
 

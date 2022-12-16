@@ -12,3 +12,9 @@ eureka:
    service-url:
       defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
       
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
