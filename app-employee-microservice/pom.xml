@@ -80,7 +80,7 @@
 				</executions>
 				<configuration>
 					<repository>${project.artifactId}</repository>
-					<tag>${project.version}</tag>
+					<tag>2.0</tag>
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>

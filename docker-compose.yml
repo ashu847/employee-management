@@ -15,6 +15,14 @@ services:
     - "27017"
     ports: 
     - 27017:27017
+    
+  employee-management-react:
+    image: ashu847/employee-management-react:1.0
+    container_name: employee-management-react
+    expose:
+    - "3000"
+    ports:
+    - "3000:3000"
 
   app-admin-microservice:
     image: ashu847/app-admin-microservice:1.0
@@ -56,13 +64,7 @@ services:
       
     links: 
         - eureka-server
-        - react-app
+        - employee-management-react
         
-  employee-management-react:
-    image: ashu847/employee-management-react:1.0
-    container_name: react-app
-    expose:
-    - "3000"
-    ports:
-    - "3000:3000"
+  
         

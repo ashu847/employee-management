@@ -1,0 +1,67 @@
+pipeline{
+
+    agent any
+
+    stages{
+        stage("Checkout-Spring-App"){
+            steps{
+                 sh "git clone https://github.com/ashu847/employee-management.git"
+            }
+		}
+        stage("Package-Application"){
+            steps{
+                sh "sudo  /home/ashmitta1/apache-maven-3.8.6/bin/mvn --v"
+                sh "sudo /home/ashmitta1/apache-maven-3.8.6/bin/mvn clean package"
+                sh "pwd"
+            }
+        }
+		
+		stage("docke-tag-admin"){
+            steps{
+				bat "docker tag app-admin-microservice:2.0 ashu847/app-admin-microservice:2.0"
+            }
+			}
+
+			}
+		stage("docke-tag-employee"){
+            steps{
+				bat "docker tag app-employee-microservice:2.0 ashu847/app-employee-microservice:2.0"
+            }
+			}
+		stage("docke-tag-management"){
+            steps{
+				bat "docker tag app-management-service:2.0 ashu847/app-management-service:2.0"
+            }
+        }
+
+        
+        stage("docker-push all images"){
+            steps{
+                sh "sudo docker push ashu847/app-admin-microservice:2.0"
+                sh "sudo docker push ashu847/app-employee-microservice:2.0"
+                sh "sudo docker push ashu847/app-management-service:2.0"
+            }
+        }
+		
+        stage("helm-chart"){
+            steps{
+                        sh 'pwd'
+                        sh 'cp -R helm/* .'
+						sh 'ls -ltr'
+                        sh 'pwd'
+                        sh '/usr/local/bin/helm upgrade --install admin-app admin'
+                        sh '/usr/local/bin/helm upgrade --install employee-app employee'
+                        sh '/usr/local/bin/helm upgrade --install eureka-app eureka'
+                        sh '/usr/local/bin/helm upgrade --install management-app management'
+            }
+        }
+
+        stage("helm-mongo-chart"){
+            steps{
+                sh "helm install repo stable/mongodb "
+            }
+        }
+
+    }
+
+}

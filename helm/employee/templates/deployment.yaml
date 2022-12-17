@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employee-deployment
+   
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: employee-pod
+      labels:
+        app: employee-app
+    spec:
+      containers:
+        - name: employee-container
+          image: ashu847/app-employee-microservice:2.0
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: '100m'
+              memory: '1G'
+            requests:
+              cpu: '2m'
+              memory: '400Mi'
+  selector:
+    matchLabels:
+     app: employee-app
