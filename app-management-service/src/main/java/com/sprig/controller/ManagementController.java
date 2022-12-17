@@ -19,7 +19,7 @@ import com.sprig.entity.Employee;
 
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://34.170.160.111:3000")
 @Controller
 public class ManagementController {
 	

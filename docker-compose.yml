@@ -56,9 +56,11 @@ services:
       
     links: 
         - eureka-server
+        - react-app
         
   employee-management-react:
     image: ashu847/employee-management-react:1.0
+    container_name: react-app
     expose:
     - "3000"
     ports:
