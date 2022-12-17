@@ -18,19 +18,19 @@ pipeline{
 		
 		stage("docke-tag-admin"){
             steps{
-				bat "docker tag app-admin-microservice:2.0 ashu847/app-admin-microservice:2.0"
+				sh "docker tag app-admin-microservice:2.0 ashu847/app-admin-microservice:2.0"
             }
 			}
 
 			}
 		stage("docke-tag-employee"){
             steps{
-				bat "docker tag app-employee-microservice:2.0 ashu847/app-employee-microservice:2.0"
+				sh "docker tag app-employee-microservice:2.0 ashu847/app-employee-microservice:2.0"
             }
 			}
 		stage("docke-tag-management"){
             steps{
-				bat "docker tag app-management-service:2.0 ashu847/app-management-service:2.0"
+				sh "docker tag app-management-service:2.0 ashu847/app-management-service:2.0"
             }
         }
 
