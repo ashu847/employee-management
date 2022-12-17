@@ -22,7 +22,7 @@ pipeline{
             }
 			}
 
-			}
+			
 		stage("docke-tag-employee"){
             steps{
 				sh "docker tag app-employee-microservice:2.0 ashu847/app-employee-microservice:2.0"
