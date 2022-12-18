@@ -6,14 +6,18 @@ spring:
     name: app-admin-microservice
  data:
     mongodb:
-      host: ${HOST_NAME:mongodb}
+      host: ${HOST_NAME:mongo-0}
       port: 27017
       database: employee
  
 
 eureka:
+  instance:
+    preferIpAddress: true
+    hostname: eureka-0
   client:
-    register-with-eureka: true
-    service-url:
-      defaultZone:  ${EUREKA_SERVER:http://eureka-service:8761/eureka/}
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:9190/eureka
 debug: true 
