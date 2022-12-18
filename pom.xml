@@ -20,5 +20,6 @@
   	<module>app-employee-microservice</module>
   	<module>app-admin-microservice</module>
   	<module>app-management-service</module>
+	<module>employee-eureka-server</module>
   </modules>
 </project>
