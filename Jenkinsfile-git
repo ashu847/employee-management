@@ -33,6 +33,21 @@ pipeline{
 				sh "sudo docker tag app-management-service:2.0 ashu847/app-management-service:2.0"
             }
         }
+		
+		stage("docker-build employee-eureka-server"){
+            steps{
+			    dir('employee-eureka-server') {
+				    sh "cd"
+                    sh "pwd"
+                    sh "sudo docker build -t ashu847/eureka-server:2.0 ."
+                }
+			    dir('employee-pipeline') {
+				    sh "cd"
+                    sh "pwd"
+                }
+            }
+        }
+
 
         
         stage("docker-push all images"){
@@ -40,6 +55,7 @@ pipeline{
                 sh "sudo docker push ashu847/app-admin-microservice:2.0"
                 sh "sudo docker push ashu847/app-employee-microservice:2.0"
                 sh "sudo docker push ashu847/app-management-service:2.0"
+				sh "sudo docker push ashu847/eureka-server:2.0"
             }
         }
 		
@@ -53,6 +69,15 @@ pipeline{
                         sh '/usr/local/bin/helm upgrade --install employee-app employee'
                         sh '/usr/local/bin/helm upgrade --install eureka-app eureka'
                         sh '/usr/local/bin/helm upgrade --install management-app management'
+						sh '/usr/local/bin/helm upgrade --install mongo mongo'
+            }
+        }
+		
+		 stage("Kubernetes-check-pods"){
+            steps{
+                sh 'helm list'
+                sh 'kubectl get pods'
+                sh 'kubectl get svc'
             }
         }
 
